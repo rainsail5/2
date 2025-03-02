@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>常用单位换算工具</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+      .conversion-group {
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 5px;
+            width: 300px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #result {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>常用单位换算工具</h1>
+    <div class="conversion-group">
+        <label for="length-input">长度换算（厘米 -> 英寸）</label>
+        <input type="number" id="length-input" placeholder="请输入厘米数">
+        <button onclick="convertLength()">换算</button>
+        <div id="length-result"></div>
+    </div>
+
+    <div class="conversion-group">
+        <label for="weight-input">重量换算（千克 -> 磅）</label>
+        <input type="number" id="weight-input" placeholder="请输入千克数">
+        <button onclick="convertWeight()">换算</button>
+        <div id="weight-result"></div>
+    </div>
+
+    <script>
+        function convertLength() {
+            const lengthInput = document.getElementById('length-input').value;
+            const resultDiv = document.getElementById('length-result');
+            if (lengthInput) {
+                const inches = lengthInput * 0.393701;
+                resultDiv.textContent = `${lengthInput} 厘米 约等于 ${inches.toFixed(2)} 英寸`;
+            } else {
+                resultDiv.textContent = '请输入有效的厘米数';
+            }
+        }
+
+        function convertWeight() {
+            const weightInput = document.getElementById('weight-input').value;
+            const resultDiv = document.getElementById('weight-result');
+            if (weightInput) {
+                const pounds = weightInput * 2.20462;
+                resultDiv.textContent = `${weightInput} 千克 约等于 ${pounds.toFixed(2)} 磅`;
+            } else {
+                resultDiv.textContent = '请输入有效的千克数';
+            }
+        }
+    </script>
+</body>
+
+</html>
